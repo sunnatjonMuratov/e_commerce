@@ -1,4 +1,3 @@
-# views.py in your products app
 from django.shortcuts import render, redirect
 from .models import Product
 from .forms import ProductForm
@@ -11,7 +10,7 @@ def edit_product(request, product_id):
         form = ProductForm(request.POST, instance=product)
         if form.is_valid():
             product = form.save(commit=False)
-            # Remove the last character from the product name
+            # Remove the last character from the product 
             product.name = remove_last_character(product.name)
             product.save()
             return redirect('product_detail', product_id=product.id)
